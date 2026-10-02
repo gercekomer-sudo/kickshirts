@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KickShirts — Voetbalshirts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#0b0d12;color:#fff}
+header{background:#10141d;border-bottom:1px solid #252b38;position:sticky;top:0;z-index:10}
+nav{max-width:1150px;margin:auto;padding:18px 22px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:900}.logo span{color:#7c5cff}
+nav a{color:#ddd;text-decoration:none;margin-left:25px}
+.cart{background:#7c5cff;border:0;color:white;padding:10px 15px;border-radius:10px;font-weight:bold}
+.hero{max-width:1150px;margin:0 auto;padding:75px 22px 55px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.hero h1{font-size:clamp(42px,7vw,78px);line-height:.95;margin-bottom:20px}
+.hero h1 span{color:#7c5cff}.hero p{color:#aeb5c3;font-size:18px;max-width:520px;line-height:1.5}
+.btn{display:inline-block;margin-top:28px;background:#7c5cff;color:#fff;text-decoration:none;padding:14px 22px;border-radius:12px;font-weight:bold}
+.ball{font-size:150px;filter:drop-shadow(0 0 35px #7c5cff)}
+section{max-width:1150px;margin:auto;padding:25px 22px 70px}
+.title{font-size:30px;margin-bottom:25px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#131722;border:1px solid #252b38;border-radius:18px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-5px);border-color:#7c5cff}
+.shirt-preview{height:260px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#191d29,#292047)}
+.mini-shirt{position:relative;font-size:125px;line-height:1;filter:drop-shadow(0 10px 15px #000);text-align:center}
+.back-name{position:absolute;top:47px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:900;color:#fff;white-space:nowrap;letter-spacing:.5px}
+.back-number{position:absolute;top:72px;left:50%;transform:translateX(-50%);font-size:35px;font-weight:900;color:#fff}
+label{display:block;color:#cbd0da;font-size:13px;margin:10px 0 5px}
+.custom{width:100%;background:#0b0d12;border:1px solid #343b4b;color:#fff;padding:10px;border-radius:8px;outline:none;margin-bottom:2px}
+.custom:focus{border-color:#7c5cff}
+.info{padding:18px}.info h3{margin-bottom:8px}.info p{color:#8f97a8;font-size:14px;margin-bottom:15px}
+.price{font-size:20px;font-weight:bold}.buy{float:right;background:#242a38;color:white;border:0;padding:9px 13px;border-radius:9px;cursor:pointer}
+footer{text-align:center;padding:30px;color:#777;background:#090b10}
+@media(max-width:750px){.hero{flex-direction:column;text-align:center}.ball{font-size:100px}.products{grid-template-columns:1fr}.hero p{margin:auto}nav a{display:none}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<div class="logo">KICK<span>SHIRTS</span></div>
+<div><a href="#shirts">Shirts</a><a href="#over">Over ons</a><button class="cart" onclick="showCart()">🛒 <span id="count">0</span></button></div>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+<div>
+<h1>Jouw passie.<br><span>Jouw shirt.</span></h1>
+<p>Ontdek voetbalshirts voor echte fans. Een moderne webshop voor jouw favoriete voetbalstijl.</p>
+<a class="btn" href="#shirts">Bekijk shirts →</a>
+</div>
+<div class="ball">⚽</div>
+</section>
+
+<section id="shirts">
+<h2 class="title">Populaire shirts</h2>
+<div class="products">
+<div class="card">
+<div class="shirt-preview" id="preview1"><div class="mini-shirt">👕<div class="back-name" id="name1">JOUW NAAM</div><div class="back-number" id="number1">10</div></div></div>
+<div class="info"><h3>Classic Football Shirt</h3><p>Personaliseer je shirt met je eigen naam en nummer.</p>
+<label>Naam</label><input class="custom" id="inputName1" maxlength="12" placeholder="Bijv. ÖMER" oninput="preview(1)">
+<label>Nummer</label><input class="custom" id="inputNumber1" type="number" min="0" max="99" value="10" oninput="preview(1)">
+<span class="price">€9,99</span><button class="buy" onclick="addCustom(1)">Toevoegen</button></div></div>
+
+<div class="card">
+<div class="shirt-preview" id="preview2"><div class="mini-shirt">👕<div class="back-name" id="name2">JOUW NAAM</div><div class="back-number" id="number2">10</div></div></div>
+<div class="info"><h3>Black Edition</h3><p>Personaliseer je shirt met je eigen naam en nummer.</p>
+<label>Naam</label><input class="custom" id="inputName2" maxlength="12" placeholder="Bijv. ÖMER" oninput="preview(2)">
+<label>Nummer</label><input class="custom" id="inputNumber2" type="number" min="0" max="99" value="10" oninput="preview(2)">
+<span class="price">€12,99</span><button class="buy" onclick="addCustom(2)">Toevoegen</button></div></div>
+
+<div class="card">
+<div class="shirt-preview" id="preview3"><div class="mini-shirt">👕<div class="back-name" id="name3">JOUW NAAM</div><div class="back-number" id="number3">10</div></div></div>
+<div class="info"><h3>Street Football</h3><p>Personaliseer je shirt met je eigen naam en nummer.</p>
+<label>Naam</label><input class="custom" id="inputName3" maxlength="12" placeholder="Bijv. ÖMER" oninput="preview(3)">
+<label>Nummer</label><input class="custom" id="inputNumber3" type="number" min="0" max="99" value="10" oninput="preview(3)">
+<span class="price">€8,99</span><button class="buy" onclick="addCustom(3)">Toevoegen</button></div></div>
+</div>
+</section>
+
+<section id="over">
+<h2 class="title">Over KickShirts</h2>
+<p style="color:#aeb5c3;line-height:1.7;max-width:700px">KickShirts is een voorbeeld van een moderne voetbalshirt-shop. Je kunt hier later echte producten, foto's, maten, voorraad en een betaalpagina aan toevoegen.</p>
+</section>
+</main>
+<footer>© 2026 KickShirts • Voetbalshirts voor fans</footer>
+
+<script>
+let count=0;
+function add(){count++;document.getElementById("count").textContent=count}
+function preview(id){
+  let name=document.getElementById("inputName"+id).value.trim().toUpperCase() || "JOUW NAAM";
+  let number=document.getElementById("inputNumber"+id).value || "10";
+  document.getElementById("name"+id).textContent=name;
+  document.getElementById("number"+id).textContent=number;
+}
+function addCustom(id){
+  let name=document.getElementById("inputName"+id).value.trim().toUpperCase();
+  let number=document.getElementById("inputNumber"+id).value;
+  if(!name){alert("Vul eerst je naam in!");return}
+  if(number==="" || number<0 || number>99){alert("Kies een nummer van 0 tot 99.");return}
+  add();
+  alert("Shirt toegevoegd!\nNaam: "+name+"\nNummer: "+number);
+}
+function showCart(){alert(count ? "Je winkelmandje bevat "+count+" gepersonaliseerd shirt(s)." : "Je winkelmandje is nog leeg.")}
+</script>
+</body>
+</html>
